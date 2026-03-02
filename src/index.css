@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 30% 10%;
+    --foreground: 49 90% 73%;
+
+    --card: 270 25% 8%;
+    --card-foreground: 49 90% 73%;
+
+    --popover: 270 25% 8%;
+    --popover-foreground: 49 90% 73%;
+
+    --primary: 49 90% 73%;
+    --primary-foreground: 270 30% 10%;
+
+    --secondary: 200 80% 60%;
+    --secondary-foreground: 220 15% 5%;
+
+    --muted: 270 20% 14%;
+    --muted-foreground: 49 60% 60%;
+
+    --accent: 0 70% 45%;
+    --accent-foreground: 220 15% 5%;
+
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 18%;
+    --input: 270 25% 8%;
+    --ring: 49 90% 73%;
+
+    --radius: 0.75rem;
+
+    /* Norse accent tokens — names kept for compatibility */
+    --neon-cyan: 190 100% 70%;
+    --neon-magenta: 340 85% 60%;
+    --neon-purple: 280 60% 65%;
+    --neon-blue: 210 60% 50%;
+    --neon-gold: 49 90% 73%;
+    --neon-amber: 49 80% 65%;
+    --neon-green: 155 40% 38%;
+
+    --btn-primary-bg: linear-gradient(135deg, hsl(49 90% 73%), hsl(49 80% 65%));
+    --btn-primary-text: 270 30% 10%;
+
+    --glow-gold: 0 0 20px hsl(49 90% 73% / 0.6), 0 0 50px hsl(49 90% 73% / 0.25), 0 0 80px hsl(49 90% 73% / 0.1);
+    --glow-cyan: 0 0 20px hsl(190 100% 70% / 0.6), 0 0 50px hsl(190 100% 70% / 0.25), 0 0 80px hsl(190 100% 70% / 0.1);
+    --glow-magenta: 0 0 20px hsl(340 85% 60% / 0.6), 0 0 50px hsl(340 85% 60% / 0.25), 0 0 80px hsl(340 85% 60% / 0.1);
+
+    --gradient-cyan: linear-gradient(135deg, hsl(190 100% 70%), hsl(200 90% 65%));
+    --gradient-magenta: linear-gradient(135deg, hsl(340 85% 60%), hsl(350 80% 55%));
+    --gradient-gold: linear-gradient(135deg, hsl(49 90% 73%), hsl(49 80% 65%));
+    --gradient-card: linear-gradient(135deg, hsl(270 25% 8% / 0.95), hsl(270 20% 11% / 0.7));
+
+    --sidebar-background: 270 30% 10%;
+    --sidebar-foreground: 49 90% 73%;
+    --sidebar-primary: 49 90% 73%;
+    --sidebar-primary-foreground: 270 30% 10%;
+    --sidebar-accent: 270 25% 8%;
+    --sidebar-accent-foreground: 49 90% 73%;
+    --sidebar-border: 270 20% 18%;
+    --sidebar-ring: 49 90% 73%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(ellipse 70% 50% at 15% 5%, hsl(190 100% 70% / 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 85% 95%, hsl(340 85% 60% / 0.05) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, hsl(49 90% 73% / 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, hsl(280 60% 65% / 0.04) 0%, transparent 60%);
+    color: hsl(var(--foreground));
+    font-family: 'Cinzel', serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-body {
+    font-family: 'Cinzel', serif;
+  }
+
+  .text-neon-cyan {
+    color: hsl(var(--neon-cyan));
+  }
+
+  .text-neon-magenta {
+    color: hsl(var(--neon-magenta));
+  }
+
+  .text-neon-purple {
+    color: hsl(var(--neon-purple));
+  }
+
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+  }
+
+  .text-neon-gold {
+    color: hsl(var(--neon-gold));
+  }
+
+  .text-neon-amber {
+    color: hsl(var(--neon-amber));
+  }
+
+  .glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+
+  .glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 12px hsl(190 100% 70% / 0.7), 0 0 35px hsl(190 100% 70% / 0.3), 0 0 60px hsl(190 100% 70% / 0.15);
+  }
+
+  .glow-text-magenta {
+    text-shadow: 0 0 12px hsl(340 85% 60% / 0.7), 0 0 35px hsl(340 85% 60% / 0.3), 0 0 60px hsl(340 85% 60% / 0.15);
+  }
+
+  .glow-text-gold {
+    text-shadow: 0 0 12px hsl(49 90% 73% / 0.7), 0 0 35px hsl(49 90% 73% / 0.3), 0 0 60px hsl(49 90% 73% / 0.15);
+  }
+
+  .btn-primary {
+    background: var(--btn-primary-bg);
+    color: hsl(var(--btn-primary-text));
+    font-weight: 700;
+    box-shadow: 0 0 18px hsl(49 90% 73% / 0.4), 0 0 40px hsl(49 90% 73% / 0.15);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, hsl(270 25% 10% / 0.9), hsl(270 20% 13% / 0.6));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(49 90% 73% / 0.15);
+    box-shadow: 0 4px 20px hsl(270 30% 5% / 0.4);
+  }
+
+  .glass-card-magenta {
+    background: linear-gradient(135deg, hsl(340 30% 12% / 0.9), hsl(270 20% 13% / 0.6));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--neon-magenta) / 0.35);
+    box-shadow: 0 4px 20px hsl(340 30% 8% / 0.4);
+  }
+
+  .glass-card-cyan {
+    background: linear-gradient(135deg, hsl(190 30% 12% / 0.9), hsl(270 20% 13% / 0.6));
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--neon-cyan) / 0.35);
+    box-shadow: 0 4px 20px hsl(190 30% 8% / 0.4);
+  }
+
+  .neon-border-cyan {
+    border: 1px solid hsl(var(--neon-cyan) / 0.5);
+    box-shadow: 0 0 14px hsl(var(--neon-cyan) / 0.15), inset 0 0 8px hsl(var(--neon-cyan) / 0.05);
+  }
+
+  .neon-border-magenta {
+    border: 1px solid hsl(var(--neon-magenta) / 0.5);
+    box-shadow: 0 0 14px hsl(var(--neon-magenta) / 0.15), inset 0 0 8px hsl(var(--neon-magenta) / 0.05);
+  }
+
+  .neon-border-gold {
+    border: 1px solid hsl(var(--neon-gold) / 0.5);
+    box-shadow: 0 0 14px hsl(var(--neon-gold) / 0.15), inset 0 0 8px hsl(var(--neon-gold) / 0.05);
+  }
+
+  .gradient-text-cyan {
+    background: var(--gradient-cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-magenta {
+    background: var(--gradient-magenta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ===================== ANIMATIONS ===================== */
+
+@keyframes ember-drift {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translateY(-20px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes mist-drift {
+  0% {
+    transform: translateX(-10%) scaleX(1.1);
+    opacity: 0.03;
+  }
+
+  50% {
+    opacity: 0.06;
+  }
+
+  100% {
+    transform: translateX(10%) scaleX(1.1);
+    opacity: 0.03;
+  }
+}
+
+@keyframes neon-flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.7;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.8;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-neon-flicker {
+  animation: neon-flicker 6s ease-in-out infinite;
+}
+
+.animate-mist {
+  animation: mist-drift 12s ease-in-out infinite alternate;
+}
+
+/* ===================== REDUCE MOTION ===================== */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--neon-gold) / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--neon-gold) / 0.5);
+}
+
+::selection {
+  background: hsl(var(--neon-gold) / 0.2);
+  color: hsl(var(--foreground));
+}
