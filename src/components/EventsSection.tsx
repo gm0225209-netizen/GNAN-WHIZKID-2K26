@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Code2, Monitor, FileText, Search, Film, Gamepad2 } from "lucide-react";
 
 const events = [
-  { icon: FileText, name: "Paper Presentation", desc: "Present your research on cutting-edge topics", color: "gold" },
+  { icon: FileText, name: "Paper Presentation", desc: "Present your research on cutting-edge topics", color: "gold", link: "#topics" },
   { icon: Search, name: "Tech Quiz", desc: "Test your technical knowledge & win big", color: "cyan" },
   { icon: Code2, name: "Code Debugging", desc: "Hunt and squash bugs under the clock", color: "magenta" },
   { icon: Monitor, name: "Web Design", desc: "Craft stunning UIs and user experiences", color: "gold" },
@@ -80,13 +80,8 @@ const EventsSection = () => {
           {events.map((event, i) => {
             const colors = colorMap[event.color as keyof typeof colorMap];
             const Icon = event.icon;
-            return (
-              <motion.div
-                key={i}
-                variants={cardVariants}
-                whileHover={{ scale: 1.03, y: -4 }}
-                className={`${colors.card} rounded-xl p-4 sm:p-6 ${colors.border} ${colors.hover} transition-all duration-300 cursor-pointer group`}
-              >
+            const cardContent = (
+              <>
                 <div className={`w-10 sm:w-12 h-10 sm:h-12 rounded-lg ${colors.badge} flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-200`}>
                   <Icon className={`w-5 sm:w-6 h-5 sm:h-6 ${colors.icon}`} />
                 </div>
@@ -97,6 +92,26 @@ const EventsSection = () => {
                 <p className="font-body text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {event.desc}
                 </p>
+              </>
+            );
+            return 'link' in event ? (
+              <motion.a
+                key={i}
+                href={(event as typeof event & { link: string }).link}
+                variants={cardVariants}
+                whileHover={{ scale: 1.03, y: -4 }}
+                className={`${colors.card} rounded-xl p-4 sm:p-6 ${colors.border} ${colors.hover} transition-all duration-300 cursor-pointer group block`}
+              >
+                {cardContent}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={i}
+                variants={cardVariants}
+                whileHover={{ scale: 1.03, y: -4 }}
+                className={`${colors.card} rounded-xl p-4 sm:p-6 ${colors.border} ${colors.hover} transition-all duration-300 cursor-pointer group`}
+              >
+                {cardContent}
               </motion.div>
             );
           })}

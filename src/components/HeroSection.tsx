@@ -3,7 +3,7 @@ import { Calendar, MapPin, Zap } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-start sm:justify-center overflow-hidden">
+    <section className="relative sm:min-h-screen flex flex-col items-center justify-start sm:justify-center overflow-hidden">
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -58,7 +58,7 @@ const HeroSection = () => {
         />
       ))}
 
-      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-5xl mx-auto pt-20 sm:pt-20">
+      <div className="relative z-10 text-center px-4 sm:px-6 w-full max-w-5xl mx-auto pt-16 pb-10 sm:pt-20 sm:pb-0">
         {/* College logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -66,26 +66,16 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-4 sm:mb-6 flex flex-col items-center text-center"
         >
-          {/* Logo + College Name only — logo spans just these 2 lines */}
-          <div className="flex items-center justify-center gap-3 sm:gap-4">
+          {/* Logo centered */}
+          <div className="flex items-center justify-center">
             <img
-              src="/logo.jpeg"
+              src="/gnan%20logo%20.jpeg"
               alt="Gnanamani Logo"
-              className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 object-contain rounded-full drop-shadow-[0_0_12px_hsl(49_90%_73%/0.15)] self-center"
+              className="w-48 sm:w-64 md:w-80 h-36 sm:h-48 md:h-60 object-contain rounded-xl drop-shadow-[0_0_28px_hsl(49_90%_73%/0.4)]"
             />
-            <h2 className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide leading-tight text-center">
-              Gnanamani College<br /> of Technology
-            </h2>
           </div>
-          {/* Centered texts below */}
-          <p className="font-body text-[10px] sm:text-xs md:text-sm text-white tracking-wide mt-1.5">
-            Accredited by NAAC 'A' Grade &amp; NBA
-          </p>
-          <p className="font-display text-[10px] sm:text-xs md:text-sm font-semibold tracking-widest uppercase text-neon-gold mt-1">
-            Autonomous
-          </p>
-          <p className="font-body text-sm sm:text-base text-white tracking-wider mt-2">
-            Association of CSE, AI&DS &amp; IT
+          <p className="font-body text-xs sm:text-sm md:text-base text-neon-gold font-semibold tracking-wide mt-3">
+            Association of CSE, IT &amp; AI&amp;DS
           </p>
         </motion.div>
 
@@ -143,10 +133,15 @@ const HeroSection = () => {
             <Calendar className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-neon-gold" />
             <span className="font-body font-semibold text-xs sm:text-sm tracking-wide">MAR 13, 2026</span>
           </div>
-          <div className="flex items-center gap-2 glass-card-magenta px-4 sm:px-5 py-2.5 sm:py-3 rounded-full neon-border-magenta">
+          <a
+            href="https://maps.app.goo.gl/d9Fe5tuo3zujkmt5A?g_st=aw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 glass-card-magenta px-4 sm:px-5 py-2.5 sm:py-3 rounded-full neon-border-magenta hover:opacity-80 transition-opacity duration-200"
+          >
             <MapPin className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-neon-magenta" />
-            <span className="font-body font-semibold text-xs sm:text-sm tracking-wide">Namakkal, Tamil Nadu</span>
-          </div>
+            <span className="font-body font-semibold text-xs sm:text-sm tracking-wide">Institution Location</span>
+          </a>
           <div className="flex items-center gap-2 glass-card px-4 sm:px-5 py-2.5 sm:py-3 rounded-full neon-border-gold">
             <Zap className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-neon-gold" />
             <span className="font-body font-semibold text-xs sm:text-sm tracking-wide">REG FEE: ₹250</span>
