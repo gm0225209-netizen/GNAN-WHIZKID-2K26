@@ -69,9 +69,10 @@ const HeroSection = () => {
           {/* Logo centered */}
           <div className="flex items-center justify-center">
             <img
-              src="/gnan%20logo%20.jpeg"
+              src="/gnan%20logo.jpeg"
               alt="Gnanamani Logo"
-              className="w-48 sm:w-64 md:w-80 h-36 sm:h-48 md:h-60 object-contain rounded-xl drop-shadow-[0_0_28px_hsl(49_90%_73%/0.4)]"
+              className="w-48 sm:w-64 md:w-80 h-36 sm:h-48 md:h-60 object-contain drop-shadow-[0_0_28px_hsl(49_90%_73%/0.4)]"
+              style={{ clipPath: "inset(16% 6% 16% 6% round 16px)" }}
             />
           </div>
           <p className="font-body text-xs sm:text-sm md:text-base text-neon-gold font-semibold tracking-wide mt-3">
