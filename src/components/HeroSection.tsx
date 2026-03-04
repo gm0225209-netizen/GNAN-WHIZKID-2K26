@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
-import { Calendar, MapPin, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, MapPin, Zap, FileText, X } from "lucide-react";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [brochureOpen, setBrochureOpen] = useState(false);
+
   return (
     <section className="relative sm:min-h-screen flex flex-col items-center justify-start sm:justify-center overflow-hidden">
       {/* Background image */}
@@ -175,7 +178,72 @@ const HeroSection = () => {
             View Events
           </motion.a>
         </motion.div>
+
+        {/* Brochure Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.5 }}
+          className="mt-6 sm:mt-8 flex justify-center"
+        >
+          <motion.button
+            onClick={() => setBrochureOpen(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            className="group relative flex items-center gap-3 glass-card neon-border-gold px-6 sm:px-8 py-4 sm:py-5 rounded-2xl hover:shadow-[0_0_40px_hsl(49_90%_73%/0.45)] transition-all duration-300 cursor-pointer"
+          >
+            {/* Glow behind icon */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[hsl(49,90%,73%,0.08)] to-transparent pointer-events-none" />
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-[hsl(49,90%,73%,0.15)] group-hover:bg-[hsl(49,90%,73%,0.25)] transition-colors duration-300">
+              <FileText className="w-5 h-5 text-neon-gold" />
+            </div>
+            <div className="text-left">
+              <p className="font-display text-xs sm:text-sm font-bold tracking-widest uppercase text-neon-gold leading-tight">
+                Brochure
+              </p>
+              <p className="font-body text-[10px] sm:text-xs text-foreground/50 tracking-wide mt-0.5">
+                Click to view event brochure
+              </p>
+            </div>
+          </motion.button>
+        </motion.div>
       </div>
+
+      {/* Brochure Lightbox Modal */}
+      <AnimatePresence>
+        {brochureOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={() => setBrochureOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.3, type: "spring", bounce: 0.2 }}
+              className="relative max-w-3xl w-full rounded-2xl overflow-hidden shadow-[0_0_60px_hsl(49_90%_73%/0.3)] border border-[hsl(49,90%,73%,0.3)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setBrochureOpen(false)}
+                className="absolute top-3 right-3 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/60 border border-white/20 text-white hover:bg-black/80 transition-colors duration-200"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <img
+                src="/brochure.jpeg"
+                alt="Event Brochure"
+                className="w-full h-auto block"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
